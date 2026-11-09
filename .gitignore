@@ -1,0 +1,9 @@
+.venv/
+instance/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.sqlite3*
+*.log
+.DS_Store
