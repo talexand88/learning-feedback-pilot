@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% set compact = item.level == 'section' %}
+{% block page_class %}{% if compact %}compact-section{% endif %}{% endblock %}
+{% block header %}{% if not compact %}{{ super() }}{% endif %}{% endblock %}
+{% block footer %}{% if not compact %}{{ super() }}{% endif %}{% endblock %}
+{% block content %}
+<p class="eyebrow">{{ item.level|capitalize }} feedback · 15–30 seconds</p><h1>{{ questionnaire.title }}</h1><p>{{ questionnaire.intro }}</p>
+<div class="context">{% if not compact %}<small>{{ course.title }}</small>{% endif %}<h2>{{ item.title }}</h2></div>
+{% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+<form method="post"><input type="hidden" name="token" value="{{ token }}">
+{% for q in questionnaire.questions %}
+{% if q.type == 'choice' %}<fieldset><legend>{{ loop.index }}. {{ q.label }} <small>{{ 'Required' if q.required else 'Optional' }}</small></legend>
+<div class="rating-options">{% for option in q.options %}<label class="option"><input type="radio" name="{{ q.id }}" value="{{ option }}" {% if q.required %}required{% endif %} {% if values.get(q.id)==option %}checked{% endif %}> {{ option }}</label>{% endfor %}</div></fieldset>
+{% else %}<label class="question" for="{{ q.id }}">{{ loop.index }}. {{ q.label }} <small>{{ 'Required' if q.required else 'Optional' }}</small></label><textarea id="{{ q.id }}" name="{{ q.id }}" rows="{{ 2 if compact else 4 }}" maxlength="{{ q.max_length }}" {% if q.required %}required{% endif %} aria-describedby="privacy">{{ values.get(q.id,'') }}</textarea>{% endif %}{% endfor %}
+<p id="privacy" class="muted">{% if compact %}Please omit personal or confidential information. Reviewed by the pilot team.{% else %}Please leave out names, email addresses, and other personal or confidential information. Comments are visible to authorized pilot reviewers.{% endif %}</p>
+<div class="form-actions"><button type="submit">Submit Feedback</button>{% if compact %}{% include 'return_links.html' %}{% endif %}</div>{% if not compact %}<p class="muted">Participation is optional. You can close this tab at any time and continue your course.</p>{% endif %}</form>{% if not compact %}{% include 'return_links.html' %}{% endif %}{% endblock %}

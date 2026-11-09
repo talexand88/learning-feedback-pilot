@@ -1,0 +1,81 @@
+{
+  "courses": {
+    "aifd": {
+      "title": "AI Infrastructure and Operations Fundamentals",
+      "items": [
+        {
+          "level": "video",
+          "id": "course-overview",
+          "title": "Course Overview",
+          "form_path": "/feedback?course=aifd&level=video&item=course-overview"
+        },
+        {
+          "level": "section",
+          "id": "networking-for-ai",
+          "title": "Networking for AI",
+          "form_path": "/feedback?course=aifd&level=section&item=networking-for-ai"
+        }
+      ],
+      "course_url": "https://www.nvidia.com/en-us/training/academy/course-player/?id=course:15139841",
+      "embed_origins": [
+        "https://www.nvidia.com"
+      ]
+    }
+  },
+  "questionnaires": {
+    "video": {
+      "version": "video-1.0",
+      "title": "Help Us Improve",
+      "intro": "Your feedback helps us improve our learning videos. This short survey is optional.",
+      "thanks": "Thank you for your feedback!",
+      "questions": [
+        {
+          "id": "q1",
+          "label": "How clear was the explanation in this video?",
+          "type": "choice",
+          "required": true,
+          "options": [
+            "Very clear",
+            "Somewhat clear",
+            "Somewhat unclear",
+            "Very unclear"
+          ]
+        },
+        {
+          "id": "q2",
+          "label": "What, if anything, could make this video easier to understand?",
+          "type": "text",
+          "required": false,
+          "max_length": 2000
+        }
+      ]
+    },
+    "section": {
+      "version": "section-1.0",
+      "title": "Your Feedback Matters",
+      "intro": "Help us improve the learning experience. This short survey is optional.",
+      "thanks": "Thank you for helping us improve the learning experience!",
+      "questions": [
+        {
+          "id": "q1",
+          "label": "How well did this section help you understand the topic?",
+          "type": "choice",
+          "required": true,
+          "options": [
+            "Very well",
+            "Somewhat well",
+            "Not very well",
+            "Not at all"
+          ]
+        },
+        {
+          "id": "q2",
+          "label": "What, if anything, would have helped you better understand this section?",
+          "type": "text",
+          "required": false,
+          "max_length": 2000
+        }
+      ]
+    }
+  }
+}

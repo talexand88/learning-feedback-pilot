@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% set compact = request.args.get('level') == 'section' %}
+{% block page_class %}{% if compact %}compact-section{% endif %}{% endblock %}
+{% block header %}{% if not compact %}{{ super() }}{% endif %}{% endblock %}
+{% block footer %}{% if not compact %}{{ super() }}{% endif %}{% endblock %}
+{% block content %}<p class="eyebrow">Feedback received</p><h1>{{ message }}</h1><p>{{ 'You can continue your course.' if compact else 'You can close this tab and return to your course.' }}</p>{% include 'return_links.html' %}{% endblock %}
